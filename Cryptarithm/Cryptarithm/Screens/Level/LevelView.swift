@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LevelView<ViewModel: LevelViewModel>: View {
+struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
     @EnvironmentObject private var appRouter: AppRouter
     @ObservedObject private var viewModel: ViewModel
 
@@ -19,6 +19,8 @@ struct LevelView<ViewModel: LevelViewModel>: View {
         ZStack {
             VStack {
                 makeNavigationView()
+                viewModel.showBannerAd()
+                    .frame(width: 320, height: 50)
                 if !viewModel.isDone {
                     ForEach(viewModel.description, id: \.self) { description in
                         CText(text: description, 16)
@@ -199,5 +201,6 @@ struct LevelView<ViewModel: LevelViewModel>: View {
 #Preview {
   LevelView(viewModel: LevelViewModelImpl(appStateService: AppStateServiceImpl(userDefaultsService: UserDefaultsService()),
                                           levelsService: LevelsServiceImpl(),
+                                          adsService: AdsService(),
                                           levelNumber: 1))
 }

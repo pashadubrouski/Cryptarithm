@@ -10,6 +10,7 @@ import SwiftUI
 protocol LevelContainer {
     func makeLevelsService() -> LevelsService
     func makeAppStateService() -> AppStateService
+    func makeAdsService() -> AdsService
 }
 
 final class LevelAssembly {
@@ -20,9 +21,10 @@ final class LevelAssembly {
     }
 
     func view(levelNumber: Int) -> some View {
-        let levelViewModel: some LevelViewModel = LevelViewModelImpl(appStateService: container.makeAppStateService(),
-                                                                     levelsService: container.makeLevelsService(),
-                                                                     levelNumber: levelNumber)
+        let levelViewModel: some LevelViewModel & AdsShowable = LevelViewModelImpl(appStateService: container.makeAppStateService(),
+                                                                                   levelsService: container.makeLevelsService(),
+                                                                                   adsService: container.makeAdsService(),
+                                                                                   levelNumber: levelNumber)
         let view = LevelView(viewModel: levelViewModel)
         return view
     }

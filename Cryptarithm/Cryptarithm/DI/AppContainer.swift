@@ -10,6 +10,7 @@ import Foundation
 final class AppContainer: ObservableObject {
     private let levelsService: LevelsService = LevelsServiceImpl()
     private let appStateService: AppStateService = AppStateServiceImpl(userDefaultsService: UserDefaultsService<AppState>())
+    private let adsService: AdsService = AdsService()
     
     func makeLevelAssembly() -> LevelAssembly {
         LevelAssembly(container: self)
@@ -20,12 +21,18 @@ final class AppContainer: ObservableObject {
     }
 }
 
-extension AppContainer: LevelListContainer, LevelContainer {
+extension AppContainer: LevelListContainer {
     func makeLevelsService() -> any LevelsService {
         return levelsService
     }
 
     func makeAppStateService() -> any AppStateService {
         return appStateService
+    }
+}
+
+extension AppContainer: LevelContainer {
+    func makeAdsService() -> AdsService {
+        return adsService
     }
 }

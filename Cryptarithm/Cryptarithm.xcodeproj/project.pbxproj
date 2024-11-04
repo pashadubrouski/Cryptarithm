@@ -16,6 +16,8 @@
 		E9519DCC2CD8E5BE00D98953 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DCB2CD8E5BE00D98953 /* UserDefaultsService.swift */; };
 		E9519DCE2CD8E60B00D98953 /* AppStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DCD2CD8E60B00D98953 /* AppStateService.swift */; };
 		E9519DD02CD91D5200D98953 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DCF2CD91D5100D98953 /* AdsService.swift */; };
+		E9519DD32CD91F3C00D98953 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E9519DD22CD91F3C00D98953 /* GoogleMobileAds */; };
+		E9519DD62CD9302E00D98953 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DD52CD9302E00D98953 /* BannerView.swift */; };
 		E9AF43702CD6CDC600705CBE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF436F2CD6CDC600705CBE /* Destination.swift */; };
 		E9AF43732CD6CF9D00705CBE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF43722CD6CF9D00705CBE /* AppRouter.swift */; };
 		E9B370322CC90F5B00A6A102 /* CryptarithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370312CC90F5B00A6A102 /* CryptarithmApp.swift */; };
@@ -49,6 +51,7 @@
 		E9519DCB2CD8E5BE00D98953 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		E9519DCD2CD8E60B00D98953 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
 		E9519DCF2CD91D5100D98953 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
+		E9519DD52CD9302E00D98953 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		E9AF436F2CD6CDC600705CBE /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		E9AF43722CD6CF9D00705CBE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		E9B3702E2CC90F5B00A6A102 /* Cryptarithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptarithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9519DD32CD91F3C00D98953 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +104,15 @@
 				E9519DCD2CD8E60B00D98953 /* AppStateService.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		E9519DD42CD9302200D98953 /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				E9519DCF2CD91D5100D98953 /* AdsService.swift */,
+				E9519DD52CD9302E00D98953 /* BannerView.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		E9AF43712CD6CF8B00705CBE /* Router */ = {
@@ -197,10 +210,10 @@
 		E9B370552CC9410D00A6A102 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E9519DD42CD9302200D98953 /* Ads */,
 				E9519DCA2CD8E5AE00D98953 /* Storage */,
 				E9B370562CC9416600A6A102 /* LevelsService.swift */,
 				E93704432CD7979E0045B93C /* LevelParser.swift */,
-				E9519DCF2CD91D5100D98953 /* AdsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -267,6 +280,9 @@
 			dependencies = (
 			);
 			name = Cryptarithm;
+			packageProductDependencies = (
+				E9519DD22CD91F3C00D98953 /* GoogleMobileAds */,
+			);
 			productName = Cryptarithm;
 			productReference = E9B3702E2CC90F5B00A6A102 /* Cryptarithm.app */;
 			productType = "com.apple.product-type.application";
@@ -295,6 +311,9 @@
 				Base,
 			);
 			mainGroup = E9B370252CC90F5B00A6A102;
+			packageReferences = (
+				E9519DD12CD91F3C00D98953 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = E9B3702F2CC90F5B00A6A102 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -322,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9519DD62CD9302E00D98953 /* BannerView.swift in Sources */,
 				E9B370652CC959B000A6A102 /* NavigationView.swift in Sources */,
 				E9B370692CC95A3A00A6A102 /* Fonts.swift in Sources */,
 				E93704422CD78C740045B93C /* CText.swift in Sources */,
@@ -496,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pavel.cryptarithm.com.Cryptarithm;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.cryptarithm.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -530,7 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pavel.cryptarithm.com.Cryptarithm;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.cryptarithm.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -564,6 +584,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9519DD12CD91F3C00D98953 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9519DD22CD91F3C00D98953 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9519DD12CD91F3C00D98953 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E9B370262CC90F5B00A6A102 /* Project object */;
 }

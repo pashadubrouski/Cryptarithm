@@ -25,9 +25,16 @@ protocol LevelViewModel: ObservableObject {
     func toggleOfferView()
 }
 
-final class LevelViewModelImpl: LevelViewModel {
+protocol AdsShowable {
+    associatedtype AdsView: View
+    func showBannerAd() -> AdsView
+    func showInterstitialAd()
+}
+
+final class LevelViewModelImpl: LevelViewModel, AdsShowable {
     private let appStateSerivce: AppStateService
     private let levelsService: LevelsService
+    private let adsService: AdsService
     private let levelParser: LevelParser = LevelParserImpl()
     
     @Published var level: Level
@@ -40,9 +47,10 @@ final class LevelViewModelImpl: LevelViewModel {
     @Published var offerAd: Bool = false
     @Published var keyboard: [String: Bool] = [:]
 
-    init(appStateService: AppStateService, levelsService: LevelsService, levelNumber: Int) {
+    init(appStateService: AppStateService, levelsService: LevelsService, adsService: AdsService, levelNumber: Int) {
         self.appStateSerivce = appStateService
         self.levelsService = levelsService
+        self.adsService = adsService
         self.level = levelsService.getLevel(number: levelNumber)
         if level.number == 1 { self.description = [DescriptionConstants.goal, DescriptionConstants.firstStep] }
         self.startLevel()
@@ -146,6 +154,7 @@ final class LevelViewModelImpl: LevelViewModel {
     func nextLevel() {
         levelsService.setNextLevel()
         self.level = levelsService.getLevel(number: level.number + 1)
+        showInterstitialAd()
         startLevel()
     }
 
@@ -153,5 +162,14 @@ final class LevelViewModelImpl: LevelViewModel {
         withAnimation {
             offerAd.toggle()
         }
+    }
+
+    func showBannerAd() -> some View {
+        return BannerAdView(adsManager: adsService)
+    }
+
+    func showInterstitialAd() {
+        adsService.loadInterstitialAd()
+        adsService.showInterstitialAd()
     }
 }
