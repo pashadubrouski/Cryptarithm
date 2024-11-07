@@ -11,7 +11,7 @@ enum DescriptionConstants {
     static let goal = "Goal: replace the letters to get a valid math equality"
     static let firstStep = "1. Tap a letter to open a keyboard"
     static let secondStep = "2. One letter can only be replaced by one digit"
-    static let thirdStep = "3. Press '?' if you need help"
+    static let thirdStep = "3. Press ? if you need help"
 }
 
 

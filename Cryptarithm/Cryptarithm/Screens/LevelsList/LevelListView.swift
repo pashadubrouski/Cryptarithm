@@ -33,7 +33,7 @@ struct LevelListView<ViewModel: LevelListViewModel>: View {
     }
 
     @ViewBuilder private func makeHeader() -> some View {
-        let config = NavigationViewConfig(title: "Levels", rightButton: NavigationButton(type: .image(image: .crown),
+        let config = NavigationViewConfig(title: Strings.levels, rightButton: NavigationButton(type: .image(image: .crown),
                                                                                          action: { print("lol") }))
         NavigationView(config: config)
     }

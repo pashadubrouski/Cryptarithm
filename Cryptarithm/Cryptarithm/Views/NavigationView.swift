@@ -50,8 +50,7 @@ struct NavigationView: View {
             makeButton(with: config.leftButton)
                 .padding(.all, Constants.componentPadding)
             Spacer()
-            Text(config.title)
-                .font(Constants.titleFont)
+            CText(text: config.title, 25)
                 .foregroundStyle(Colors.foregroundColor)
                 .padding(.all, Constants.componentPadding)
             Spacer()
@@ -70,7 +69,7 @@ struct NavigationView: View {
                         Image(image.rawValue)
                             .resizable()
                     case .text(let text):
-                        Text(text)
+                        CText(text: text, 20)
                     case .systemImage(let systemImage):
                         Image(systemName: systemImage.rawValue)
                             .resizable()

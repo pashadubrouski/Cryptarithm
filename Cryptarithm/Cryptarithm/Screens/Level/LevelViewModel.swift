@@ -52,7 +52,7 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
         self.levelsService = levelsService
         self.adsService = adsService
         self.level = levelsService.getLevel(number: levelNumber)
-        if level.number == 1 { self.description = [DescriptionConstants.goal, DescriptionConstants.firstStep] }
+        if level.number == 1 { self.description = [Strings.goal, Strings.firstStep] }
         self.startLevel()
         self.setupKeyboard()
         
@@ -108,8 +108,8 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
             description = []
             return
         }
-        selectedLetter == "" ? (description = [DescriptionConstants.goal, DescriptionConstants.firstStep]) :
-        (description = [DescriptionConstants.secondStep,  DescriptionConstants.thirdStep])
+        selectedLetter == "" ? (description = [Strings.goal, Strings.firstStep]) :
+        (description = [Strings.secondStep,  Strings.thirdStep])
     }
 
     func answerSelected(digit: String) {

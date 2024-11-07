@@ -16,8 +16,8 @@ struct CText: View {
         self.size = size
     }
     var body: some View {
-        Text(text)
-            .font(.custom("LilitaOne", size: size))
+        Text(LocalizedStringKey(text))
+            .font(.custom("ChalkboardSE-Bold", size: size))
     }
 }
 

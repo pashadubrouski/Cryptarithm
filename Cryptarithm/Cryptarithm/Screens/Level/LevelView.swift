@@ -66,7 +66,7 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
     }
 
     @ViewBuilder private func makeNavigationView() -> some View {
-        NavigationView(config: NavigationViewConfig(title: "Level " + String(viewModel.level.number),
+        NavigationView(config: NavigationViewConfig(title: Strings.level(viewModel.level.number),
                                                     leftButton: NavigationButton(type: .systemImage(systemImage: .goBack),
                                                                                  action: { appRouter.dismissToRoot() }),
                                                     rightButton: NavigationButton(type: .image(image: .crown),
@@ -156,7 +156,7 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
 
     @ViewBuilder private func makeVictoryView() -> some View {
         VStack {
-            CText(text: "Excellent!", 40)
+            CText(text: Strings.exelent, 40)
             HStack {
                 Button {
                     viewModel.repeatLevel()
@@ -187,7 +187,7 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
                 }
             VStack {
                 Spacer()
-                WatchAdView(title: "Open the letter \"\(viewModel.selectedLetter)\" ?",
+                WatchAdView(title: Strings.openLetter(viewModel.selectedLetter),
                             action: {})
                 .zIndex(1)
             }

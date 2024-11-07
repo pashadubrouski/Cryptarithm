@@ -37,7 +37,7 @@ struct WatchAdView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: Constants.iconSize)
-                    CText(text: "Watch AD", Constants.fontSize)
+                    CText(text: Strings.watchAd, Constants.fontSize)
                 }
                 .padding(.all, Constants.buttonInternalPadding)
             })

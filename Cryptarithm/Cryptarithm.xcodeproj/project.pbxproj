@@ -11,6 +11,7 @@
 		E93704422CD78C740045B93C /* CText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704412CD78C740045B93C /* CText.swift */; };
 		E93704442CD7979E0045B93C /* LevelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704432CD7979E0045B93C /* LevelParser.swift */; };
 		E93704462CD799A80045B93C /* LevelInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704452CD799A80045B93C /* LevelInternal.swift */; };
+		E940BACF2CDD46FA005581C3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940BACE2CDD46FA005581C3 /* Strings.swift */; };
 		E9519DC72CD8CC9E00D98953 /* WatchAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DC62CD8CC9E00D98953 /* WatchAdView.swift */; };
 		E9519DC92CD8E26800D98953 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DC82CD8E26800D98953 /* AppState.swift */; };
 		E9519DCC2CD8E5BE00D98953 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DCB2CD8E5BE00D98953 /* UserDefaultsService.swift */; };
@@ -18,6 +19,8 @@
 		E9519DD02CD91D5200D98953 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DCF2CD91D5100D98953 /* AdsService.swift */; };
 		E9519DD32CD91F3C00D98953 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E9519DD22CD91F3C00D98953 /* GoogleMobileAds */; };
 		E9519DD62CD9302E00D98953 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DD52CD9302E00D98953 /* BannerView.swift */; };
+		E98773392CDBBF34003CC065 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E98773382CDBBF34003CC065 /* Localizable.xcstrings */; };
+		E987733F2CDCF55E003CC065 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E987733E2CDCF55E003CC065 /* Storyboard.storyboard */; };
 		E9AF43702CD6CDC600705CBE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF436F2CD6CDC600705CBE /* Destination.swift */; };
 		E9AF43732CD6CF9D00705CBE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF43722CD6CF9D00705CBE /* AppRouter.swift */; };
 		E9B370322CC90F5B00A6A102 /* CryptarithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370312CC90F5B00A6A102 /* CryptarithmApp.swift */; };
@@ -46,12 +49,15 @@
 		E93704412CD78C740045B93C /* CText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CText.swift; sourceTree = "<group>"; };
 		E93704432CD7979E0045B93C /* LevelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelParser.swift; sourceTree = "<group>"; };
 		E93704452CD799A80045B93C /* LevelInternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelInternal.swift; sourceTree = "<group>"; };
+		E940BACE2CDD46FA005581C3 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		E9519DC62CD8CC9E00D98953 /* WatchAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAdView.swift; sourceTree = "<group>"; };
 		E9519DC82CD8E26800D98953 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E9519DCB2CD8E5BE00D98953 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		E9519DCD2CD8E60B00D98953 /* AppStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateService.swift; sourceTree = "<group>"; };
 		E9519DCF2CD91D5100D98953 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		E9519DD52CD9302E00D98953 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		E98773382CDBBF34003CC065 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E987733E2CDCF55E003CC065 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		E9AF436F2CD6CDC600705CBE /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		E9AF43722CD6CF9D00705CBE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		E9B3702E2CC90F5B00A6A102 /* Cryptarithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptarithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,15 @@
 			path = Ads;
 			sourceTree = "<group>";
 		};
+		E98773372CDBBF18003CC065 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				E98773382CDBBF34003CC065 /* Localizable.xcstrings */,
+				E940BACE2CDD46FA005581C3 /* Strings.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		E9AF43712CD6CF8B00705CBE /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +158,7 @@
 		E9B370302CC90F5B00A6A102 /* Cryptarithm */ = {
 			isa = PBXGroup;
 			children = (
+				E98773372CDBBF18003CC065 /* Strings */,
 				E9B370472CC91FB000A6A102 /* DI */,
 				E937043A2CD78B420045B93C /* Constatns */,
 				E9AF43712CD6CF8B00705CBE /* Router */,
@@ -252,6 +268,7 @@
 				E9B3706F2CC963CD00A6A102 /* LevelListItem.swift */,
 				E93704412CD78C740045B93C /* CText.swift */,
 				E9519DC62CD8CC9E00D98953 /* WatchAdView.swift */,
+				E987733E2CDCF55E003CC065 /* Storyboard.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,6 +325,23 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
+				"de-DE",
+				ar,
+				el,
+				"es-ES",
+				fr,
+				hi,
+				it,
+				ja,
+				ko,
+				li,
+				nb,
+				pl,
+				"pt-PT",
+				sv,
+				uk,
+				"zh-Hans",
 				Base,
 			);
 			mainGroup = E9B370252CC90F5B00A6A102;
@@ -330,7 +364,9 @@
 			files = (
 				E9B3706A2CC95BC600A6A102 /* LilitaOne.ttf in Resources */,
 				E9B370392CC90F5D00A6A102 /* Preview Assets.xcassets in Resources */,
+				E98773392CDBBF34003CC065 /* Localizable.xcstrings in Resources */,
 				E9B370362CC90F5D00A6A102 /* Assets.xcassets in Resources */,
+				E987733F2CDCF55E003CC065 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +399,7 @@
 				E9B3704C2CC9214600A6A102 /* LevelViewModel.swift in Sources */,
 				E9B370572CC9416600A6A102 /* LevelsService.swift in Sources */,
 				E9B370322CC90F5B00A6A102 /* CryptarithmApp.swift in Sources */,
+				E940BACF2CDD46FA005581C3 /* Strings.swift in Sources */,
 				E9B370702CC963CD00A6A102 /* LevelListItem.swift in Sources */,
 				E9AF43732CD6CF9D00705CBE /* AppRouter.swift in Sources */,
 				E93704442CD7979E0045B93C /* LevelParser.swift in Sources */,
