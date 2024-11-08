@@ -9,5 +9,5 @@ import Foundation
 
 enum Destination: Codable, Hashable {
     case levelsList
-    case levelDetails(levelNumber: Int)
+    case levelDetails(id: Int)
 }

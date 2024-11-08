@@ -10,7 +10,7 @@ import Foundation
 protocol AppStateService {
     func saveState(_ state: AppState)
     func getCurrentState() -> AppState
-    func levelPassed(levelNumber: Int)
+    func levelPassed(id: Int)
 }
 
 final class AppStateServiceImpl: AppStateService {
@@ -32,19 +32,18 @@ final class AppStateServiceImpl: AppStateService {
         userDefaultsService.save(value: state, key: key)
     }
 
-    func levelPassed(levelNumber: Int) {
+    func levelPassed(id: Int) {
         guard let currentState else { return }
-        guard levelNumber > currentState.lastLevel else { return }
-        self.currentState?.lastLevel = levelNumber
+        guard id >= currentState.lastLevelId else { return }
+        self.currentState?.lastLevelId = id + 1
         saveState(self.currentState!)
     }
 
     func loadState() {
-        if let state = userDefaultsService.retrieve(key: key) {
-            currentState = state
-            return
-        } else {
+        guard let state = userDefaultsService.retrieve(key: key) else {
             saveState(AppState())
+            return
         }
+        currentState = state
     }
 }

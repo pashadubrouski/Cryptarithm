@@ -20,11 +20,11 @@ final class LevelAssembly {
         self.container = container
     }
 
-    func view(levelNumber: Int) -> some View {
+    func view(id: Int) -> some View {
         let levelViewModel: some LevelViewModel & AdsShowable = LevelViewModelImpl(appStateService: container.makeAppStateService(),
                                                                                    levelsService: container.makeLevelsService(),
                                                                                    adsService: container.makeAdsService(),
-                                                                                   levelNumber: levelNumber)
+                                                                                   id: id)
         let view = LevelView(viewModel: levelViewModel)
         return view
     }

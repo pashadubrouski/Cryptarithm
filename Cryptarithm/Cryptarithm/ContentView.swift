@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var appContainer: AppContainer
     @EnvironmentObject private var appRouter: AppRouter
-    
+
     var body: some View {
         NavigationStack(path: $appRouter.navigationPath) {
             appContainer.makeLevelListAssembly().view()
@@ -18,8 +18,8 @@ struct ContentView: View {
                     switch destination {
                     case .levelsList:
                         appContainer.makeLevelListAssembly().view()
-                    case .levelDetails(let level):
-                        appContainer.makeLevelAssembly().view(levelNumber: level)
+                    case .levelDetails(let id):
+                        appContainer.makeLevelAssembly().view(id: id)
                             .navigationBarHidden(true)
                     }
                 }

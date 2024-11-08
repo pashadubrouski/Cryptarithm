@@ -8,27 +8,38 @@
 import Foundation
 
 protocol LevelParser {
-    func levelToInternal(level: Level) -> LevelInternal
+    func questionToInternalLevel(index: Int, question: String) -> LevelInternal
 }
 
 final class LevelParserImpl: LevelParser {
 
-    func levelToInternal(level: Level) -> LevelInternal {
-        let components = level.question.components(separatedBy: "=")
-        let questionParts = components[0].components(separatedBy: "+")
-        let resultPart: [Character] = Array(components[1])
+    func questionToInternalLevel(index: Int, question: String) -> LevelInternal {
+        let fullComponents = question.components(separatedBy: ";")
+        let fullQuestionPart = fullComponents[0]
+        let answerPart = fullComponents[1]
         
-        let questionFirstPart: [String] = questionParts[0].map { String($0) }
-        let questionSecondPart: [String] = questionParts[1].map { String($0) }
+        
+        let components = fullQuestionPart.components(separatedBy: "=")
+        let questionParts = components[0]
+        let resultPart = components[1]
+        
+        let questionComponents = questionParts.components(separatedBy: "+")
+        
+        let questionPartsDictionary: [Int: [String]] = questionComponents.enumerated().reduce(into: [:]) { result, part in
+            result[part.offset] = part.element.map { String($0) }
+        }
+        
         let result: [String] = resultPart.map { String($0) }
-
-        return LevelInternal(questionFirstPart: questionFirstPart,
-                             questionSecondPart: questionSecondPart,
-                             result: result,
-                             mathSymbol: "+",
-                             answer: parseAnswer(answer: level.answer))
+        
+        return LevelInternal(
+            id: index,
+            questionParts: questionPartsDictionary,
+            result: result,
+            mathSymbol: "+",
+            answer: parseAnswer(answer: answerPart)
+        )
     }
-    
+
     func parseAnswer(answer: String) -> [String: String] {
         let answerArray: [Character] = Array(answer)
         let pairs = stride(from: 0, to: answerArray.count - 1, by: 2).compactMap { index -> (Character, Character)? in

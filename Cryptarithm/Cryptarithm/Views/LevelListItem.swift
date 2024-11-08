@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct LevelListItemData {
-    let id: String
-    let isLocked: Bool
-    let number: Int
-    
-    init(isLocked: Bool, number: Int) {
-        self.isLocked = isLocked
-        self.number = number
-        self.id = String(number)
-    }
-}
-
 struct LevelListItem: View {
     private let itemData: LevelListItemData
 
@@ -56,12 +44,12 @@ struct LevelListItem: View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Colors.yellow)
             .overlay(alignment: .center) {
-                CText(text: String(itemData.number), 30)
+                CText(text: String(itemData.id), 30)
                     .padding([.horizontal, .vertical], 5)
             }
     }
 }
 
 #Preview {
-    LevelListItem(itemData: LevelListItemData(isLocked: false, number: 1))
+    LevelListItem(itemData: LevelListItemData(id: 0, isLocked: false))
 }

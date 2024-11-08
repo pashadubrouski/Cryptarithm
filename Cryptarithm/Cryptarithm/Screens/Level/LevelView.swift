@@ -19,17 +19,18 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
         ZStack {
             VStack {
                 makeNavigationView()
-                viewModel.showBannerAd()
-                    .frame(width: 320, height: 50)
-                if !viewModel.isDone {
-                    ForEach(viewModel.description, id: \.self) { description in
-                        CText(text: description, 16)
-                            .padding(.horizontal, 5)
-                            .padding(.vertical, 5)
-                    }
+                if viewModel.showAds {
+                    viewModel.showBannerAd()
+                        .frame(width: 320, height: 50)
+                }
+                ForEach(viewModel.description, id: \.self) { description in
+                    CText(text: description, 16)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 5)
+                        .transition(.opacity)
                 }
                 Spacer()
-                makeLevelView()
+                makeLevelTaskView()
                 Spacer()
                 makeAnswersView(data: viewModel.userAnswer)
                 Spacer()
@@ -47,30 +48,28 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
                 viewModel.resetSelection()
             }
             if viewModel.offerAd {
-                makeAdView()
+                makeShowAdView()
             }
         }
     }
     
-    @ViewBuilder private func makeLevelView() -> some View {
-        VStack(spacing: 0) {
-            notVisibleWidthComponent(longestPart: viewModel.levelInternal.longestPart, mathSymbol: viewModel.levelInternal.mathSymbol)
-            makeTaskView(data: viewModel.levelInternal.questionFirstPart)
-            makeMathSymbol(data: viewModel.levelInternal.mathSymbol)
-            makeTaskView(data: viewModel.levelInternal.questionSecondPart)
-            makeDivider()
-            makeTaskView(data: viewModel.levelInternal.result)
-        }
-        .fixedSize()
-        .frame(maxWidth: .infinity, alignment: .center)
-    }
-
     @ViewBuilder private func makeNavigationView() -> some View {
-        NavigationView(config: NavigationViewConfig(title: Strings.level(viewModel.level.number),
+        NavigationView(config: NavigationViewConfig(title: Strings.level(viewModel.level.id),
                                                     leftButton: NavigationButton(type: .systemImage(systemImage: .goBack),
                                                                                  action: { appRouter.dismissToRoot() }),
                                                     rightButton: NavigationButton(type: .image(image: .crown),
                                                                                   action: {})))
+    }
+
+    @ViewBuilder private func makeLevelTaskView() -> some View {
+        VStack(spacing: 0) {
+            notVisibleWidthComponent(longestPart: viewModel.level.longestPart, mathSymbol: viewModel.level.mathSymbol)
+            makeQuestionView()
+            makeDivider()
+            makeTextLineView(data: viewModel.level.result)
+        }
+        .fixedSize()
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     @ViewBuilder private func notVisibleWidthComponent(longestPart: String, mathSymbol: String) -> some View {
@@ -79,7 +78,16 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
             .foregroundStyle(.clear)
     }
 
-    @ViewBuilder private func makeTaskView(data: [String]) -> some View {
+    @ViewBuilder private func makeQuestionView() -> some View {
+        ForEach(viewModel.level.questionParts.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+            makeTextLineView(data: value)
+            if key < viewModel.level.linesCount - 1 {
+                makeSymbolView(data: viewModel.level.mathSymbol)
+            }
+        }
+    }
+
+    @ViewBuilder private func makeTextLineView(data: [String]) -> some View {
         HStack {
             Spacer()
             ForEach(data, id: \.self) { letter in
@@ -96,7 +104,7 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
         }
     }
 
-    @ViewBuilder private func makeMathSymbol(data: String) -> some View {
+    @ViewBuilder private func makeSymbolView(data: String) -> some View {
         HStack {
             CText(text: data, 70)
                 .frame(alignment: .leading)
@@ -179,7 +187,7 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
         }
     }
 
-    @ViewBuilder private func makeAdView() -> some View {
+    @ViewBuilder private func makeShowAdView() -> some View {
         ZStack {
             Color.black.opacity(0.2)
                 .onTapGesture {
@@ -202,5 +210,5 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
   LevelView(viewModel: LevelViewModelImpl(appStateService: AppStateServiceImpl(userDefaultsService: UserDefaultsService()),
                                           levelsService: LevelsServiceImpl(),
                                           adsService: AdsService(),
-                                          levelNumber: 1))
+                                          id: 1))
 }

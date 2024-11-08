@@ -10,6 +10,7 @@ import SwiftUI
 fileprivate enum Constants {
     static let rowsCount = 5
     static let spacing: CGFloat = 10
+    static let backgroundColor = Colors.foregroundColor
 }
 
 struct LevelListView<ViewModel: LevelListViewModel>: View {
@@ -21,20 +22,27 @@ struct LevelListView<ViewModel: LevelListViewModel>: View {
     }
 
     var body: some View {
-        VStack(alignment: .center) {
-            makeHeader()
-            makeLevelsList()
-            Spacer()
-        }
-        .background(Colors.foregroundColor)
-        .onAppear {
-            viewModel.fetchLevels()
+        GeometryReader { geometry in
+            VStack(alignment: .center) {
+                makeNavigationView()
+                makeLevelsList()
+                Spacer()
+                    .frame(height: geometry.safeAreaInsets.bottom)
+            }
+            .ignoresSafeArea(edges: .bottom)
+            .background(Constants.backgroundColor)
+            .onAppear(perform: onAppear)
         }
     }
 
-    @ViewBuilder private func makeHeader() -> some View {
-        let config = NavigationViewConfig(title: Strings.levels, rightButton: NavigationButton(type: .image(image: .crown),
-                                                                                         action: { print("lol") }))
+    private func onAppear() {
+        viewModel.fetchLevels()
+    }
+
+    @ViewBuilder private func makeNavigationView() -> some View {
+        let config = NavigationViewConfig(title: Strings.levels,
+                                          rightButton: NavigationButton(type: .image(image: .crown),
+                                                                        action: { }))
         NavigationView(config: config)
     }
 
@@ -42,13 +50,14 @@ struct LevelListView<ViewModel: LevelListViewModel>: View {
         let totalSpaces = Constants.rowsCount + 1
         let width = (UIScreen.main.bounds.width - CGFloat(totalSpaces)*Constants.spacing)/CGFloat(Constants.rowsCount)
         let columns = [GridItem](repeating: GridItem(.fixed(width)), count: Constants.rowsCount)
-        ScrollView {
+
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, alignment: .center) {
                 ForEach(viewModel.levelsList, id: \.id) { level in
-                    LevelListItem(itemData: LevelListItemData(isLocked: level.isLocked, number: level.number))
+                    LevelListItem(itemData: level)
                         .aspectRatio(1, contentMode: .fit)
                         .onTapGesture {
-                            if !level.isLocked { appRouter.navigate(to: .levelDetails(levelNumber: level.number)) }
+                            if !level.isLocked { appRouter.navigate(to: .levelDetails(id: level.id)) }
                         }
                 }
             }

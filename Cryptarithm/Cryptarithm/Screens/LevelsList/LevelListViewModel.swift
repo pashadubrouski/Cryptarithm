@@ -16,7 +16,6 @@ final class LevelListViewModelImpl: LevelListViewModel {
     private let levelsService: LevelsService
     private let appStateService: AppStateService
 
-    private var levels: [Level] = []
     @Published var levelsList: [LevelListItemData] = []
 
     init(levelsService: LevelsService, appStateService: AppStateService) {
@@ -26,12 +25,12 @@ final class LevelListViewModelImpl: LevelListViewModel {
     }
 
     func fetchLevels() {
-        levels = levelsService.getLevels()
-        mapLevels()
+        mapLevels(levels: levelsService.fetchLevels())
     }
 
-    private func mapLevels() {
-        let currentLevel = appStateService.getCurrentState().lastLevel
-        self.levelsList = levels.map({ LevelListItemData(isLocked: $0.number - 1>currentLevel, number: $0.number) })
+    private func mapLevels(levels: [LevelInternal]) {
+        let currentLevel = appStateService.getCurrentState().lastLevelId
+        self.levelsList = levels.map({ LevelListItemData(id: $0.id,
+                                                         isLocked: $0.id > currentLevel) })
     }
 }

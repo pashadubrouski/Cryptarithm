@@ -9,7 +9,7 @@ import SwiftUI
 
 final class AppRouter: ObservableObject {
     @Published var navigationPath = NavigationPath()
-    
+
     func navigate(to destination: Destination) {
         navigationPath.append(destination)
     }

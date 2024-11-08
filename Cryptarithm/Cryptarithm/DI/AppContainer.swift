@@ -11,7 +11,7 @@ final class AppContainer: ObservableObject {
     private let levelsService: LevelsService = LevelsServiceImpl()
     private let appStateService: AppStateService = AppStateServiceImpl(userDefaultsService: UserDefaultsService<AppState>())
     private let adsService: AdsService = AdsService()
-    
+
     func makeLevelAssembly() -> LevelAssembly {
         LevelAssembly(container: self)
     }

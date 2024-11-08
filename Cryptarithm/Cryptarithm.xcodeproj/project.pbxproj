@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E937043C2CD78B520045B93C /* DescriptionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937043B2CD78B520045B93C /* DescriptionConstants.swift */; };
 		E93704422CD78C740045B93C /* CText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704412CD78C740045B93C /* CText.swift */; };
 		E93704442CD7979E0045B93C /* LevelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704432CD7979E0045B93C /* LevelParser.swift */; };
 		E93704462CD799A80045B93C /* LevelInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93704452CD799A80045B93C /* LevelInternal.swift */; };
@@ -21,6 +20,8 @@
 		E9519DD62CD9302E00D98953 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9519DD52CD9302E00D98953 /* BannerView.swift */; };
 		E98773392CDBBF34003CC065 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E98773382CDBBF34003CC065 /* Localizable.xcstrings */; };
 		E987733F2CDCF55E003CC065 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E987733E2CDCF55E003CC065 /* Storyboard.storyboard */; };
+		E988D7BB2CDE4ED90008E392 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E988D7BA2CDE4ED90008E392 /* Questions.swift */; };
+		E988D7BE2CDEBDEC0008E392 /* LevelListItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E988D7BD2CDEBDEC0008E392 /* LevelListItemData.swift */; };
 		E9AF43702CD6CDC600705CBE /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF436F2CD6CDC600705CBE /* Destination.swift */; };
 		E9AF43732CD6CF9D00705CBE /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF43722CD6CF9D00705CBE /* AppRouter.swift */; };
 		E9B370322CC90F5B00A6A102 /* CryptarithmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370312CC90F5B00A6A102 /* CryptarithmApp.swift */; };
@@ -35,7 +36,6 @@
 		E9B370522CC92AB000A6A102 /* LevelListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370512CC92AB000A6A102 /* LevelListAssembly.swift */; };
 		E9B370542CC93E9800A6A102 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370532CC93E9800A6A102 /* AppContainer.swift */; };
 		E9B370572CC9416600A6A102 /* LevelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370562CC9416600A6A102 /* LevelsService.swift */; };
-		E9B3705A2CC9419400A6A102 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370592CC9419400A6A102 /* Level.swift */; };
 		E9B3705D2CC946E800A6A102 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3705C2CC946E800A6A102 /* Colors.swift */; };
 		E9B370602CC9474800A6A102 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3705F2CC9474800A6A102 /* Color+.swift */; };
 		E9B370652CC959B000A6A102 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B370642CC959B000A6A102 /* NavigationView.swift */; };
@@ -45,7 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E937043B2CD78B520045B93C /* DescriptionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionConstants.swift; sourceTree = "<group>"; };
 		E93704412CD78C740045B93C /* CText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CText.swift; sourceTree = "<group>"; };
 		E93704432CD7979E0045B93C /* LevelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelParser.swift; sourceTree = "<group>"; };
 		E93704452CD799A80045B93C /* LevelInternal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelInternal.swift; sourceTree = "<group>"; };
@@ -58,6 +57,8 @@
 		E9519DD52CD9302E00D98953 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		E98773382CDBBF34003CC065 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E987733E2CDCF55E003CC065 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		E988D7BA2CDE4ED90008E392 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		E988D7BD2CDEBDEC0008E392 /* LevelListItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelListItemData.swift; sourceTree = "<group>"; };
 		E9AF436F2CD6CDC600705CBE /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		E9AF43722CD6CF9D00705CBE /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		E9B3702E2CC90F5B00A6A102 /* Cryptarithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptarithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +75,6 @@
 		E9B370512CC92AB000A6A102 /* LevelListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelListAssembly.swift; sourceTree = "<group>"; };
 		E9B370532CC93E9800A6A102 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		E9B370562CC9416600A6A102 /* LevelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsService.swift; sourceTree = "<group>"; };
-		E9B370592CC9419400A6A102 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E9B3705C2CC946E800A6A102 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E9B3705F2CC9474800A6A102 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		E9B370642CC959B000A6A102 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
@@ -95,14 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E937043A2CD78B420045B93C /* Constatns */ = {
-			isa = PBXGroup;
-			children = (
-				E937043B2CD78B520045B93C /* DescriptionConstants.swift */,
-			);
-			path = Constatns;
-			sourceTree = "<group>";
-		};
 		E9519DCA2CD8E5AE00D98953 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +120,14 @@
 				E940BACE2CDD46FA005581C3 /* Strings.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		E988D7BC2CDEBDDB0008E392 /* UI Models */ = {
+			isa = PBXGroup;
+			children = (
+				E988D7BD2CDEBDEC0008E392 /* LevelListItemData.swift */,
+			);
+			path = "UI Models";
 			sourceTree = "<group>";
 		};
 		E9AF43712CD6CF8B00705CBE /* Router */ = {
@@ -160,7 +160,6 @@
 			children = (
 				E98773372CDBBF18003CC065 /* Strings */,
 				E9B370472CC91FB000A6A102 /* DI */,
-				E937043A2CD78B420045B93C /* Constatns */,
 				E9AF43712CD6CF8B00705CBE /* Router */,
 				E9B370662CC959EB00A6A102 /* Fonts */,
 				E9B3705E2CC9473E00A6A102 /* Extensions */,
@@ -237,9 +236,10 @@
 		E9B370582CC9418B00A6A102 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E9B370592CC9419400A6A102 /* Level.swift */,
-				E93704452CD799A80045B93C /* LevelInternal.swift */,
+				E988D7BC2CDEBDDB0008E392 /* UI Models */,
 				E9519DC82CD8E26800D98953 /* AppState.swift */,
+				E93704452CD799A80045B93C /* LevelInternal.swift */,
+				E988D7BA2CDE4ED90008E392 /* Questions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -385,13 +385,12 @@
 				E9519DC92CD8E26800D98953 /* AppState.swift in Sources */,
 				E9519DC72CD8CC9E00D98953 /* WatchAdView.swift in Sources */,
 				E9B370522CC92AB000A6A102 /* LevelListAssembly.swift in Sources */,
-				E937043C2CD78B520045B93C /* DescriptionConstants.swift in Sources */,
 				E9519DD02CD91D5200D98953 /* AdsService.swift in Sources */,
 				E9519DCC2CD8E5BE00D98953 /* UserDefaultsService.swift in Sources */,
-				E9B3705A2CC9419400A6A102 /* Level.swift in Sources */,
 				E9AF43702CD6CDC600705CBE /* Destination.swift in Sources */,
 				E9B3704E2CC9214D00A6A102 /* LevelView.swift in Sources */,
 				E9B370542CC93E9800A6A102 /* AppContainer.swift in Sources */,
+				E988D7BB2CDE4ED90008E392 /* Questions.swift in Sources */,
 				E93704462CD799A80045B93C /* LevelInternal.swift in Sources */,
 				E9B370342CC90F5B00A6A102 /* ContentView.swift in Sources */,
 				E9B3705D2CC946E800A6A102 /* Colors.swift in Sources */,
@@ -405,6 +404,7 @@
 				E93704442CD7979E0045B93C /* LevelParser.swift in Sources */,
 				E9B370602CC9474800A6A102 /* Color+.swift in Sources */,
 				E9B370502CC9259C00A6A102 /* LevelAssembly.swift in Sources */,
+				E988D7BE2CDEBDEC0008E392 /* LevelListItemData.swift in Sources */,
 				E9B370442CC91EFD00A6A102 /* LevelListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
