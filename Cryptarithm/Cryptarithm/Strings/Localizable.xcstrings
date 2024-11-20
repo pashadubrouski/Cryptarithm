@@ -566,6 +566,9 @@
         }
       }
     },
+    "GO TO LIST" : {
+
+    },
     "goal" : {
       "extractionState" : "manual",
       "localizations" : {

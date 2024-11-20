@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LevelInternal: Identifiable, Hashable, Codable {
+struct Level: Identifiable, Hashable, Codable {
     var id: Int
     var questionParts: [Int: [String]]
     var result: [String]

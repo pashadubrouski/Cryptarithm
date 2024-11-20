@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol LevelViewModel: ObservableObject {
-    var level: LevelInternal { get }
+    var level: Level { get }
     var isDone: Bool { get }
     var description: [String] { get }
     var selectedLetter: String { get set }
@@ -22,6 +22,8 @@ protocol LevelViewModel: ObservableObject {
     func repeatLevel()
     func nextLevel()
     func toggleOfferView()
+    func backButtonPressed()
+    
 }
 
 protocol AdsShowable {
@@ -35,10 +37,13 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
     private let appStateSerivce: AppStateService
     private let levelsService: LevelsService
     private let adsService: AdsService
+    private let input: LevelInput
+    private let output: LevelOutput
+    
     private let levelParser: LevelParser = LevelParserImpl()
 
-    @Published var level: LevelInternal
-    private var levelOriginal: LevelInternal = LevelInternal()
+    @Published var level: Level
+    private var levelOriginal: Level = Level()
 
     @Published var isDone: Bool = false
     @Published var description: [String] = []
@@ -54,11 +59,17 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
     @Published var showAds: Bool = true
     @Published var offerAd: Bool = false
 
-    init(appStateService: AppStateService, levelsService: LevelsService, adsService: AdsService, id: Int) {
+    init(appStateService: AppStateService,
+         levelsService: LevelsService,
+         adsService: AdsService,
+         input: LevelInput,
+         output: LevelOutput) {
         self.appStateSerivce = appStateService
         self.levelsService = levelsService
         self.adsService = adsService
-        self.level = levelsService.getLevel(id: id)
+        self.input = input
+        self.output = output
+        self.level = levelsService.getLevel(id: input.id)
         self.startLevel()
     }
 
@@ -148,7 +159,7 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
     }
 
     func toggleOfferView() {
-        withAnimation { offerAd.toggle() }
+        output.onShowAdTapped?()
     }
 
     func showBannerAd() -> some View {
@@ -158,5 +169,9 @@ final class LevelViewModelImpl: LevelViewModel, AdsShowable {
     func showInterstitialAd() {
         adsService.loadInterstitialAd()
         adsService.showInterstitialAd()
+    }
+
+    func backButtonPressed() {
+        output.onBackButtonTapped?()
     }
 }

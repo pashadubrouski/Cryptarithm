@@ -8,20 +8,20 @@
 import Foundation
 
 protocol LevelsService {
-    func fetchLevels() -> [LevelInternal]
-    func getLevel(id: Int) -> LevelInternal
+    func fetchLevels() -> [Level]
+    func getLevel(id: Int) -> Level
 }
 
 final class LevelsServiceImpl: LevelsService {
-    private var levels: [LevelInternal] = []
-    func fetchLevels() -> [LevelInternal] {
+    private var levels: [Level] = []
+    func fetchLevels() -> [Level] {
         self.levels = hardCodeQuestions.enumerated().map({ index, question in
             return LevelParserImpl().questionToInternalLevel(index: index + 1, question: question)
         })
         return self.levels
     }
 
-    func getLevel(id: Int) -> LevelInternal {
+    func getLevel(id: Int) -> Level {
         return levels.first { $0.id == id }!
     }
 

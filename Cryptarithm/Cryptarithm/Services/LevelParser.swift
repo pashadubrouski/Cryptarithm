@@ -8,12 +8,12 @@
 import Foundation
 
 protocol LevelParser {
-    func questionToInternalLevel(index: Int, question: String) -> LevelInternal
+    func questionToInternalLevel(index: Int, question: String) -> Level
 }
 
 final class LevelParserImpl: LevelParser {
 
-    func questionToInternalLevel(index: Int, question: String) -> LevelInternal {
+    func questionToInternalLevel(index: Int, question: String) -> Level {
         let fullComponents = question.components(separatedBy: ";")
         let fullQuestionPart = fullComponents[0]
         let answerPart = fullComponents[1]
@@ -31,7 +31,7 @@ final class LevelParserImpl: LevelParser {
         
         let result: [String] = resultPart.map { String($0) }
         
-        return LevelInternal(
+        return Level(
             id: index,
             questionParts: questionPartsDictionary,
             result: result,

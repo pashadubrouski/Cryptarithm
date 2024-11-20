@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
-    @EnvironmentObject private var appRouter: AppRouter
     @ObservedObject private var viewModel: ViewModel
 
     init(viewModel: ViewModel) {
@@ -47,16 +46,13 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
             .onTapGesture {
                 viewModel.resetSelection()
             }
-            if viewModel.offerAd {
-                makeShowAdView()
-            }
         }
     }
-    
+
     @ViewBuilder private func makeNavigationView() -> some View {
         NavigationView(config: NavigationViewConfig(title: Strings.level(viewModel.level.id),
                                                     leftButton: NavigationButton(type: .systemImage(systemImage: .goBack),
-                                                                                 action: { appRouter.dismissToRoot() }),
+                                                                                 action: viewModel.backButtonPressed),
                                                     rightButton: NavigationButton(type: .image(image: .crown),
                                                                                   action: {})))
     }
@@ -186,29 +182,11 @@ struct LevelView<ViewModel: LevelViewModel & AdsShowable>: View {
             .fixedSize()
         }
     }
-
-    @ViewBuilder private func makeShowAdView() -> some View {
-        ZStack {
-            Color.black.opacity(0.2)
-                .onTapGesture {
-                    viewModel.toggleOfferView()
-                }
-            VStack {
-                Spacer()
-                WatchAdView(title: Strings.openLetter(viewModel.selectedLetter),
-                            action: {})
-                .zIndex(1)
-            }
-            .transition(.asymmetric(insertion: .move(edge: .bottom),
-                                    removal: .move(edge: .bottom)))
-        }
-        .ignoresSafeArea(edges: .top)
-    }
 }
 
-#Preview {
-  LevelView(viewModel: LevelViewModelImpl(appStateService: AppStateServiceImpl(userDefaultsService: UserDefaultsService()),
-                                          levelsService: LevelsServiceImpl(),
-                                          adsService: AdsService(),
-                                          id: 1))
-}
+//#Preview {
+//  LevelView(viewModel: LevelViewModelImpl(appStateService: AppStateServiceImpl(userDefaultsService: UserDefaultsService()),
+//                                          levelsService: LevelsServiceImpl(),
+//                                          adsService: AdsService(),
+//                                          id: 1))
+//}

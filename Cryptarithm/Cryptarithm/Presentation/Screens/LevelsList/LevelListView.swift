@@ -14,7 +14,6 @@ fileprivate enum Constants {
 }
 
 struct LevelListView<ViewModel: LevelListViewModel>: View {
-    @EnvironmentObject private var appRouter: AppRouter
     @ObservedObject private var viewModel: ViewModel
 
     init(viewModel: ViewModel) {
@@ -56,15 +55,10 @@ struct LevelListView<ViewModel: LevelListViewModel>: View {
                 ForEach(viewModel.levelsList, id: \.id) { level in
                     LevelListItem(itemData: level)
                         .aspectRatio(1, contentMode: .fit)
-                        .onTapGesture {
-                            if !level.isLocked { appRouter.navigate(to: .levelDetails(id: level.id)) }
-                        }
+                        .onTapGesture { viewModel.levelSelected(id: level.id) }
                 }
             }
         }
     }
 }
 
-#Preview {
-    AppContainer().makeLevelListAssembly().view()
-}
